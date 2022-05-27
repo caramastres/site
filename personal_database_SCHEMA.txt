@@ -1,0 +1,31 @@
+$ cd Python/Personal_App/Login/
+
+$ sqlite3 personal_database.db
+
+CREATE TABLE alunos(
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+nome TEXT(100) NOT NULL,
+telefone TEXT(16) NOT NULL,
+nascimento TEXT(10) NOT NULL,
+email TEXT(60) NOT NULL UNIQUE,
+senha TEXT(64) NOT NULL,
+admin INTEGER DEFAULT 0 NOT NULL,
+data TEXT(30) NOT NULL
+);
+
+CREATE TABLE avaliacao(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+id_aluno INTEGER NOT NULL,
+data TEXT(30) NOT NULL,
+sexo TEXT(10) NOT NULL,
+altura REAL,
+peso REAL,
+fc INTEGER,
+pa TEXT(8),
+FOREIGN KEY (id_aluno) REFERENCES alunos(id)
+);
+
+
+#c.cadastra_aluno("Gracie Correa", "(14)99833-0448", "1984-05-30", "gracie-c@gmail.com", "30051984", 0)
+
+#c.cadastra_aluno("Pedro Pereira", "(14)99876-5432", "1980-10-10", "p_pereira@hotmail.com", "AbCdE", 0)
